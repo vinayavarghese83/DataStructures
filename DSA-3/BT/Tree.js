@@ -53,32 +53,7 @@ class BinaryTree {
             }
     }
 
-    // // Method to insert a node into the binary tree
-    // insert(value) {
-    //     const newNode = new TreeNode(value);
-    //     if (!this.root) {
-    //         this.root = newNode;
-    //     } else {
-    //         this._insertRecursive(this.root, newNode);
-    //     }
-    // }
-
-    // _insertRecursive(current, newNode) {
-    //     if (newNode.value < current.value) {
-    //         if (!current.left) {
-    //             current.left = newNode;
-    //         } else {
-    //             this._insertRecursive(current.left, newNode);
-    //         }
-    //     } else {
-    //         if (!current.right) {
-    //             current.right = newNode;
-    //         } else {
-    //             this._insertRecursive(current.right, newNode);
-    //         }
-    //     }
-    // }
-
+    
     // Method for inorder traversal
     inorderTraversal(node, result = []) {
         if (node) {
@@ -88,6 +63,14 @@ class BinaryTree {
         }
         return result;
     }
+    preOrderTraversal(node, result = []) {
+        if (node) {
+            result.push(node.value);
+            this.preOrderTraversal(node.left, result);
+            this.preOrderTraversal(node.right, result);
+        }
+        return result;
+    }   
 }
 
 // Example Usage
@@ -101,4 +84,5 @@ console.log("Inserted 15 " );
 bt.inserting(3);
 console.log("Inserted 3 " );
 
-console.log("Inorder Traversal:", bt.inorderTraversal(bt.root));  // Output: [3, 5, 10, 15]
+ console.log("Inorder Traversal:", bt.inorderTraversal(bt.root));  // Output: [3, 5, 10, 15]
+console.log("Pre Order Traversal:", bt.preOrderTraversal(bt.root));  // Output: [3, 5, 10, 15]
